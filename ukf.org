@@ -141,12 +141,12 @@ w_i = \left\{ \begin{array}{ll}
 
 Predicted mean
 \[
-x_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i X_{k+1|k,i}
+x_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i \mathcal{X}_{k+1|k,i}
 \]
 
 Predicted covariance
 \[
-P_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i (X_{k+1|k,i} - x_{k+1|k}) (X_{k+1|k,i} - x_{k+1|k})^T
+P_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i (\mathcal{X}_{k+1|k,i} - x_{k+1|k}) (\mathcal{X}_{k+1|k,i} - x_{k+1|k})^T
 \]
 
 * Predict Radar Measurement
@@ -161,7 +161,7 @@ Measurement Vector
 
 Measurement Model
 \[
-z_{k+1|k} = h(x_{k+1}) + w_{k+1}
+z_{k+1|k} = h(x_{k+1}) + \omega_{k+1}
 \]
 \[
 \rho = \sqrt{p_x^2+p_y^2}
@@ -173,14 +173,17 @@ z_{k+1|k} = h(x_{k+1}) + w_{k+1}
 \dot{\rho} = \frac{p_x v \cos\psi + p_y v \sin\psi}{\sqrt{p_x^2 + p_y^2}}
 \]
 
+Measurement Prediction
+\[ \mathcal{Z}_{k+1|k,i} = h(\mathcal{X}_{k+1|k,i}) + \omega_{k+1} \]
+
 Predicted Measurement Mean
 \[
-z_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i Z_{k+1|k,i}
+z_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i \mathcal{Z}_{k+1|k,i}
 \]
 
 Predicted Covariance
 \[
-S_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i (Z_{k+1|k,i} - z_{k+1|k}) (Z_{k+1|k,i} - z_{k+1|k})^T + R
+S_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i (\mathcal{Z}_{k+1|k,i} - z_{k+1|k}) (\mathcal{Z}_{k+1|k,i} - z_{k+1|k})^T + R
 \]
 
 \[

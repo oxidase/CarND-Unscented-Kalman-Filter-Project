@@ -83,7 +83,7 @@ void process_file(char *input_file)
         true_values.push_back(gt_package);
 
         static int xxx = 0;
-        if (++xxx == 2) break;
+        //if (++xxx == 5) break;
     }
 
     // Create a UKF instance
@@ -116,11 +116,11 @@ void process_file(char *input_file)
         ukf.ProcessMeasurement(measurement_pack_list[k]);
 
         // output the estimation
-        std::cout << ukf.x_(0) << "\t"; // pos1 - est
-        std::cout << ukf.x_(1) << "\t"; // pos2 - est
-        std::cout << ukf.x_(2) << "\t"; // vel_abs -est
-        std::cout << ukf.x_(3) << "\t"; // yaw_angle -est
-        std::cout << ukf.x_(4) << "\t"; // yaw_rate -est
+        std::cout << ukf.x(0) << "\t"; // pos1 - est
+        std::cout << ukf.x(1) << "\t"; // pos2 - est
+        std::cout << ukf.x(2) << "\t"; // vel_abs -est
+        std::cout << ukf.x(3) << "\t"; // yaw_angle -est
+        std::cout << ukf.x(4) << "\t"; // yaw_rate -est
 
         // output the measurements
         if (measurement_pack_list[k].sensor_type_ == MeasurementPackage::LASER)
@@ -164,10 +164,10 @@ void process_file(char *input_file)
         // convert ukf x vector to cartesian to compare to ground truth
         VectorXd ukf_x_cartesian_ = VectorXd(4);
 
-        float x_estimate_ = ukf.x_(0);
-        float y_estimate_ = ukf.x_(1);
-        float vx_estimate_ = ukf.x_(2) * cos(ukf.x_(3));
-        float vy_estimate_ = ukf.x_(2) * sin(ukf.x_(3));
+        float x_estimate_ = ukf.x(0);
+        float y_estimate_ = ukf.x(1);
+        float vx_estimate_ = ukf.x(2) * cos(ukf.x(3));
+        float vy_estimate_ = ukf.x(2) * sin(ukf.x(3));
 
         ukf_x_cartesian_ << x_estimate_, y_estimate_, vx_estimate_, vy_estimate_;
 
@@ -272,10 +272,10 @@ int main(int argc, char* argv[])
 
                                 VectorXd estimate(4);
 
-                                double p_x = ukf.x_(0);
-                                double p_y = ukf.x_(1);
-                                double v  = ukf.x_(2);
-                                double yaw = ukf.x_(3);
+                                double p_x = ukf.x(0);
+                                double p_y = ukf.x(1);
+                                double v  = ukf.x(2);
+                                double yaw = ukf.x(3);
 
                                 double v1 = cos(yaw)*v;
                                 double v2 = sin(yaw)*v;
