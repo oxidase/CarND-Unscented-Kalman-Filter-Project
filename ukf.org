@@ -1,0 +1,283 @@
+#+options: toc:nil
+#+html_link_home:
+#+html_link_up:
+#+html_mathjax:
+#+html_head: <link rel="stylesheet" type="text/css" href="http://www.star.bris.ac.uk/bjm/css/bjm.css" />
+#+latex_header: \usepackage{fullpage}
+
+* Model
+
+Models list:
+- constant velocity model (CV)
+- constant turn rate and velocity magnitude model (CTRV)
+- constant turn rate and acceleration (CTRA)
+- constant steering angle and velocity (CSAV)
+- constant curvature and acceleration (CCA)
+
+* The Constant Tturn Rate and Velocity magnitude model (CTRV) Model
+
+** General State Vector
+\[ x = \left[ \begin{array}{c} p_x \\ p_y \\ v \\ \psi \\ \dot{\psi} \end{array} \right] \]
+
+** Differential equation
+
+\[
+\left[ \begin{array}{c} \dot{p}_x \\ \dot{p}_y \\ \dot{v} \\ \dot{\psi} \\ \ddot{\psi} \end{array} \right]
+=
+\left[ \begin{array}{c} v\cos{\psi} \\ v\sin{\psi} \\ 0 \\ \dot{\psi} \\ 0 \end{array} \right]
+\]
+
+** Integral
+\[
+x_{k+1}
+=
+x_k + \int_{t_k}^{t_{k+1}}
+ \left[ \begin{array}{c} \dot{p}_x \\ \dot{p}_y \\ \dot{v} \\ \dot{\psi} \\ \ddot{\psi} \end{array} \right] d t
+=
+x_k +
+ \left[ \begin{array}{c} \int_{t_k}^{t_{k+1}} v(t)\cos{\psi(t)} dt \\ \int_{t_k}^{t_{k+1}} v(t)\sin{\psi(t)} dt \\ 0 \\ \dot{\psi_k} \Delta t \\ 0 \end{array} \right]
+=
+x_k +
+ \left[ \begin{array}{c} v_k \int_{t_k}^{t_{k+1}} \cos(\psi_k + \dot{\psi}_k\cdot(t-t_k)) dt \\ v_k \int_{t_k}^{t_{k+1}} \sin(\psi_k + \dot{\psi}_k\cdot(t-t_k)) dt \\ 0 \\ \dot{\psi_k} \Delta t \\ 0 \end{array} \right]
+\]
+
+[[https://www.wolframalpha.com/input/?i=v+int+cos(a+%2B+b+*+(t+-+c+))+dt,++t+%3D+c+to+d][Integral]]
+\[
+x_{k+1}
+=
+x_k +
+ \left[ \begin{array}{c}
+   \frac{v_k}{\dot{\psi}_k} ( \sin(\psi_k + \dot{\psi}_k\Delta t) - \sin(\psi_k)) \\
+   \frac{v_k}{\dot{\psi}_k} (-\cos(\psi_k + \dot{\psi}_k\Delta t) + \cos(\psi_k)) \\
+   0 \\
+   \dot{\psi_k} \Delta t \\
+   0
+\end{array} \right]
+\]
+
+** CTRV Zero Yaw Rate $\dot{\psi}_k=0$
+\[
+x_{k+1}
+=
+x_k +
+ \left[ \begin{array}{c}
+   v_k \cos(\psi_k) \Delta t \\
+   v_k \sin(\psi_k) \Delta t \\
+   0 \\
+   0 \\
+   0
+\end{array} \right]
+\]
+
+** CTRV Process Noise Vector
+
+Longitudinal acceleration noise $\nu_{a,k} \sim \mathcal{N}(0, \sigma_a^2)$
+
+Yaw acceleration noise $\nu_{\ddot{\psi},k} \sim \mathcal{N}(0, \sigma_{\ddot{\psi}}^2)$
+
+\[
+x_{k+1}
+=
+x_k +
+ \left[ \begin{array}{c}
+   \frac{v_k}{\dot{\psi}_k} ( \sin(\psi_k + \dot{\psi}_k\Delta t) - \sin(\psi_k)) \\
+   \frac{v_k}{\dot{\psi}_k} (-\cos(\psi_k + \dot{\psi}_k\Delta t) + \cos(\psi_k)) \\
+   0 \\
+   \dot{\psi_k} \Delta t \\
+   0
+ \end{array} \right] +  \left[ \begin{array}{c}
+   \frac{1}{2} (\Delta t)^2 \cos(\psi_k) \cdot \nu_{a,k} \\
+   \frac{1}{2} (\Delta t)^2 \sin(\psi_k) \cdot \nu_{a,k} \\
+   \Delta t \cdot \nu_{a,k} \\
+   \frac{1}{2} (\Delta t)^2 \cdot \nu_{\ddot{\psi},k} \\
+   \Delta t \cdot \nu_{\ddot{\psi},k}
+ \end{array} \right]
+\]
+
+* Unscented Kalman Filter
+
+** Sigma point matrix
+
+Number sigma points $n_{\sigma} = 2 n_x + 1$
+
+Rule for sigma point matrix
+\[
+X_{k|k} = \left[ x_{k|k} \quad x_{k|k} + \sqrt{(\lambda + n_x) P_{k|k}} \quad x_{k|k} - \sqrt{(\lambda + n_x) P_{k|k}} \right]
+\]
+
+Design parameter $\lambda = 3 - n_x$
+
+** UKF Augmentation
+
+Process noise covariance matrix
+\[ Q = E \left\{\nu_k \cdot \nu_k^T \right\} \]
+
+Augmented state
+\[ x_{a,k} = \left[ \begin{array}{c} p_x \\ p_y \\ v \\ \psi \\ \dot{\psi} \\ \nu_a \\ \nu_{\ddot{\psi}}\end{array} \right] \]
+
+Augmented covariance matrix
+\[ P_{a,k|k} = \left[ \begin{array}{cc} P_{k|k} & 0 \\ 0 & Q \end{array} \right]\]
+
+
+Rule for augmented sigma point matrix
+\[
+X_{a,k|k} = \left[ x_{a,k|k} \quad x_{a,k|k} + \sqrt{(\lambda + n_a) P_{a,k|k}} \quad x_{a,k|k} - \sqrt{(\lambda + n_a) P_{a,k|k}} \right]
+\]
+with scaling factor $\lambda = 3-n_a$
+
+** Sigma Point Prediction
+
+\[ \mathcal{X}_{k+1} = f(x_k, \nu_k) \qquad \mathcal{X}_{a,k|k} \to \mathcal{X}_{k+1|k} \]
+
+** Predicted Mean and Covariance
+
+Weights
+\[
+w_i = \left\{ \begin{array}{ll}
+\frac{\lambda}{\lambda + n_a}, &\quad i = 1, \\
+\frac{1}{2(\lambda + n_a)}, &\quad i = 2, \ldots, n_{\sigma}
+\end{array} \right.
+\]
+
+Predicted mean
+\[
+x_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i X_{k+1|k,i}
+\]
+
+Predicted covariance
+\[
+P_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i (X_{k+1|k,i} - x_{k+1|k}) (X_{k+1|k,i} - x_{k+1|k})^T
+\]
+
+* Predict Radar Measurement
+
+
+State Vector
+\[ x_{k+1|k} = \left[ \begin{array}{c} p_x \\ p_y \\ v \\ \psi \\ \dot{\psi} \end{array} \right] \]
+
+
+Measurement Vector
+\[ z_{k+1|k} = \left[ \begin{array}{c} \rho \\ \varphi \\ \dot{\rho} \end{array} \right] \]
+
+Measurement Model
+\[
+z_{k+1|k} = h(x_{k+1}) + w_{k+1}
+\]
+\[
+\rho = sqrt{p_x^2+p_y^2}
+\]
+\[
+\varphi = \arctan{\frac{p_y}{p_x}}
+\]
+\[
+\dot{\rho} = \frac{p_x v \cos\psi + p_y v \sin\psi}{\sqrt{p_x^2 + p_y^2}}
+\]
+
+Predicted Measurement Mean
+\[
+z_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i Z_{k+1|k,i}
+\]
+
+Predicted Covariance
+\[
+S_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i (Z_{k+1|k,i} - z_{k+1|k}) (Z_{k+1|k,i} - z_{k+1|k})^T + R
+\]
+
+\[
+R = E\left\{ w_k w_k^T \right\} = \left[\begin{array}{ccc} \sigma_\rho^2 & 0 & 0 \\ 0 & \sigma_\varphi^2 & 0 \\ 0&0&\sigma_\dot{\rho}^2 \end{array}\right]
+\]
+
+** UKF Update
+
+Kalman gain
+\[
+K_{k+1|k} = T_{k+1|k} S^{-1}_{k+1|k}
+\]
+
+State update
+\[
+x_{k+1|k+1} = x_{k+1|k} + K_{k+1|k} (z_{k+1} - z_{k+1|k})
+\]
+
+Covariance matrix update
+\[
+P_{k+1|k+1} = P_{k+1|k} - K_{k+1|k} S_{k+1|k} K_{k+1|k}^T
+\]
+
+Cross-correlation between sigma points in state space and measurement space
+\[
+T_{k+1|k} = \sum_{i=0}^{2 n_\sigma} w_i (\mathcal{X}_{k+1|k,i} - x_{k+1|k}) (\mathcal{Z}_{k+1|k,i} - z_{k+1|k})^T
+\]
+
+* Process Noise and the UKF Project
+
+** Process Noise and the UKF Project
+
+$\sigma_a^2$ representing longitudinal acceleration noise (you might see this referred to as linear acceleration)
+$\sigma_\ddot{\sigma}​​​^2$ representing yaw acceleration noise (this is also called angular acceleration)
+
+
+
+*** Linear Acceleration Noise Parameter Intuition
+
+Let's get some intuition for these noise parameters.
+The units for the acceleration noise parameter $\sigma_a^2$
+ are $\frac{m^2}{s^4}$.
+Taking the square root, we get $\sigma_a$ with units $\frac{m}{s^2}$.
+So the square root of the acceleration noise parameter has the same units as acceleration: ​$\frac{m}{s^2}$.
+
+The parameter $\sigma_a$ is the standard deviation of linear acceleration!
+Remember from the "CTRV Process Noise Vector" lecture that the linear acceleration is being modeled
+as a Gaussian distribution with mean zero and standard deviation $\sigma_a$.
+In a Gaussian distribution, about 95% of your values are within $2\sigma_a$.
+
+So if you choose $\sigma_a^2=9 \frac{m^2}{s^4}$,
+ then you expect the acceleration to be between $-6\frac{m}{s^2}$ and $+6\frac{m}{s^2}$ about 95% of the time.
+
+Tuning parameters involves some trial and error. Using your intuition can help you find reasonable initial values.
+
+*** Yaw Acceleration Noise Parameter Intuition
+
+Let's think about what values might be reasonable for the yaw acceleration noise parameter.
+
+Imagine the bicycle is traveling in a circle with a constant yaw rate (angular velocity) of ​$\frac{\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}}$.
+ That means the bicycle would complete a full circle in 16 seconds: ​$\frac{\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}} \cdot 16s = 2 \pi$.
+
+That seems reasonable for an average bike rider traveling in a circle with a radius of maybe 16 meters.
+
+The bike rider would have also have a tangential velocity of 6.28 meters per second because
+ ​$\frac{\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}} \cdot 16\; \mathrm{meters}=6.28$ meters per second.
+
+What if the angular acceleration were now $-2\pi \frac{\mathrn{rad}}{\mathrm{s}^2}$ instead of zero?
+In just one second, the angular velocity would go from $\frac{\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}}$
+to $-\frac{15\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}}$.
+This comes from ​$\frac{\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}} - 2\pi \frac{\mathrm{rad}}{\mathrm{s}^2}\cdot 1\mathrm{s} =  -\frac{15\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}}$
+
+The bicycle has been completing a complete circle in 16 seconds.
+But with such a high angular acceleration, then all of a sudden the bicycle is going around
+the circle in the opposite direction and only takes about 1.1 second to complete the circle.
+
+From a bicycle, a setting in the range of $\sigma_{\ddot{\psi}} = 2\pi \frac{\mathrn{rad}}{\mathrm{s}^2}$ seems too high.
+In the project, you'll have to experiment with different values to see what works well.
+
+*** Measurement Noise Parameters
+
+Measurement noise parameters represent uncertainty in sensor measurements. In general, the manufacturer will provide these values in the sensor manual. In the UKF project, you will not need to tune these parameters.
+
+** Normalized Innovation Squared
+
+\[
+\varepsilon = (z_{k+1} - z_{k+1|k})^T \cdot S^{-1}_{k+1|k} \cdot (z_{k+1} - z_{k+1|k}) \sim \chi^2
+\]
+
+#+BEGIN_SRC R :results output org :export both
+library(ascii)
+a <- ascii(c(qchisq(.05, df=2), qchisq(.95, df=2)),caption='chi^2, df=2')
+b <- ascii(c(qchisq(.05, df=3), qchisq(.95, df=3)),caption='chi^2, df=3')
+print(a,type="org")
+print(b,type="org")
+rm(a,b)
+#+END_SRC
+
+| 0.10 | 5.99 |
+| 0.35 | 7.81 |
