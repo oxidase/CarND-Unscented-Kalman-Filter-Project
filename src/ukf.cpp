@@ -56,12 +56,23 @@ UKF::UKF()
 
     // initial covariance matrix
     P_ = MatrixXd(n_x_, n_x_);
+    P_ <<
+        1, 0,  0,  0,  0,
+        0,  1, 0,  0,  0,
+        0,  0,  1, 0,  0,
+        0,  0,  0,  1, 0,
+        0,  0,  0,  0, 1;
 
     // predicted sigma points matrix
     Xsig_pred_ = MatrixXd::Zero(n_x_, 2 * n_aug_ + 1);
 
     // Weights of sigma points
     weights_ = VectorXd::Zero(2 * n_aug_ + 1);
+    weights_(0) = lambda_ / (lambda_ + n_aug_);
+    for (int i= 1; i < 2 * n_aug_ + 1; i++)
+    {
+        weights_(i) = 1. / (2. * (lambda_ + n_aug_));
+    }
 }
 
 UKF::~UKF() {}
@@ -72,12 +83,39 @@ UKF::~UKF() {}
  */
 void UKF::ProcessMeasurement(MeasurementPackage meas_package)
 {
-    /**
-       TODO:
+    if (!is_initialized_)
+    {
+        if (meas_package.sensor_type_ == MeasurementPackage::RADAR)
+        {
+            double rho = meas_package.raw_measurements_[0];
+            double phi = meas_package.raw_measurements_[1];
+            double rho_dot = meas_package.raw_measurements_[2];
+            x_ << rho * std::cos(phi), rho * std::sin(phi), rho_dot, 0., 0.;
+        }
+        else if (meas_package.sensor_type_ == MeasurementPackage::LASER)
+        {
+            double x = meas_package.raw_measurements_[0];
+            double y = meas_package.raw_measurements_[1];
+            x_ << x, y, 0., 0., 0.;
+        }
 
-       Complete this function! Make sure you switch between lidar and radar
-       measurements.
-    */
+        is_initialized_ = true;
+    }
+    else
+    {
+        Prediction((meas_package.timestamp_ - previous_timestamp_) / 1000000.0);
+
+        if (meas_package.sensor_type_ == MeasurementPackage::RADAR && use_radar_)
+        {
+            UpdateRadar(meas_package);
+        }
+        else if (meas_package.sensor_type_ == MeasurementPackage::LASER && use_laser_)
+        {
+            UpdateLidar(meas_package);
+        }
+    }
+
+    previous_timestamp_ = meas_package.timestamp_;
 }
 
 /**

@@ -164,7 +164,7 @@ Measurement Model
 z_{k+1|k} = h(x_{k+1}) + w_{k+1}
 \]
 \[
-\rho = sqrt{p_x^2+p_y^2}
+\rho = \sqrt{p_x^2+p_y^2}
 \]
 \[
 \varphi = \arctan{\frac{p_y}{p_x}}

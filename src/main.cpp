@@ -81,6 +81,9 @@ void process_file(char *input_file)
         iss >> x_gt >> y_gt >> vx_gt  >> vy_gt >> a >> b;
         gt_package << x_gt, y_gt, vx_gt, vy_gt;
         true_values.push_back(gt_package);
+
+        static int xxx = 0;
+        if (++xxx == 2) break;
     }
 
     // Create a UKF instance
