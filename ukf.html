@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-05-28 Sun 10:29 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="miha" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://www.star.bris.ac.uk/bjm/css/bjm.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+
+<div id="outline-container-orgda41c1e" class="outline-2">
+<h2 id="orgda41c1e"><span class="section-number-2">1</span> Model</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Models list:
+</p>
+<ul class="org-ul">
+<li>constant velocity model (CV)</li>
+<li>constant turn rate and velocity magnitude model (CTRV)</li>
+<li>constant turn rate and acceleration (CTRA)</li>
+<li>constant steering angle and velocity (CSAV)</li>
+<li>constant curvature and acceleration (CCA)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org59ed9aa" class="outline-2">
+<h2 id="org59ed9aa"><span class="section-number-2">2</span> The Constant Tturn Rate and Velocity magnitude model (CTRV) Model</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-org88e856c" class="outline-3">
+<h3 id="org88e856c"><span class="section-number-3">2.1</span> General State Vector</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+\[ x = \left[ \begin{array}{c} p_x \\ p_y \\ v \\ \psi \\ \dot{\psi} \end{array} \right] \]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge449fd3" class="outline-3">
+<h3 id="orge449fd3"><span class="section-number-3">2.2</span> Differential equation</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+\[
+\left[ \begin{array}{c} \dot{p}_x \\ \dot{p}_y \\ \dot{v} \\ \dot{\psi} \\ \ddot{\psi} \end{array} \right]
+=
+\left[ \begin{array}{c} v\cos{\psi} \\ v\sin{\psi} \\ 0 \\ \dot{\psi} \\ 0 \end{array} \right]
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9351225" class="outline-3">
+<h3 id="org9351225"><span class="section-number-3">2.3</span> Integral</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+\[
+x_{k+1}
+=
+x_k + \int_{t_k}^{t_{k+1}}
+ \left[ \begin{array}{c} \dot{p}_x \\ \dot{p}_y \\ \dot{v} \\ \dot{\psi} \\ \ddot{\psi} \end{array} \right] d t
+=
+x_k +
+ \left[ \begin{array}{c} \int_{t_k}^{t_{k+1}} v(t)\cos{\psi(t)} dt \\ \int_{t_k}^{t_{k+1}} v(t)\sin{\psi(t)} dt \\ 0 \\ \dot{\psi_k} \Delta t \\ 0 \end{array} \right]
+=
+x_k +
+ \left[ \begin{array}{c} v_k \int_{t_k}^{t_{k+1}} \cos(\psi_k + \dot{\psi}_k\cdot(t-t_k)) dt \\ v_k \int_{t_k}^{t_{k+1}} \sin(\psi_k + \dot{\psi}_k\cdot(t-t_k)) dt \\ 0 \\ \dot{\psi_k} \Delta t \\ 0 \end{array} \right]
+\]
+</p>
+
+<p>
+<a href="https://www.wolframalpha.com/input/?i=v+int+cos(a+++b+*+(t+-+c+))+dt,++t+=+c+to+d">Integral</a>
+\[
+x_{k+1}
+=
+x_k +
+ \left[ \begin{array}{c}
+   \frac{v_k}{\dot{\psi}_k} ( \sin(\psi_k + \dot{\psi}_k\Delta t) - \sin(\psi_k)) \\
+   \frac{v_k}{\dot{\psi}_k} (-\cos(\psi_k + \dot{\psi}_k\Delta t) + \cos(\psi_k)) \\
+   0 \\
+   \dot{\psi_k} \Delta t \\
+   0
+\end{array} \right]
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org47f34a2" class="outline-3">
+<h3 id="org47f34a2"><span class="section-number-3">2.4</span> CTRV Zero Yaw Rate \(\dot{\psi}_k=0\)</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+\[
+x_{k+1}
+=
+x_k +
+ \left[ \begin{array}{c}
+   v_k \cos(\psi_k) \Delta t \\
+   v_k \sin(\psi_k) \Delta t \\
+   0 \\
+   0 \\
+   0
+\end{array} \right]
+\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9379a9d" class="outline-3">
+<h3 id="org9379a9d"><span class="section-number-3">2.5</span> CTRV Process Noise Vector</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+Longitudinal acceleration noise \(\nu_{a,k} \sim \mathcal{N}(0, \sigma_a^2)\)
+</p>
+
+<p>
+Yaw acceleration noise \(\nu_{\ddot{\psi},k} \sim \mathcal{N}(0, \sigma_{\ddot{\psi}}^2)\)
+</p>
+
+<p>
+\[
+x_{k+1}
+=
+x_k +
+ \left[ \begin{array}{c}
+   \frac{v_k}{\dot{\psi}_k} ( \sin(\psi_k + \dot{\psi}_k\Delta t) - \sin(\psi_k)) \\
+   \frac{v_k}{\dot{\psi}_k} (-\cos(\psi_k + \dot{\psi}_k\Delta t) + \cos(\psi_k)) \\
+   0 \\
+   \dot{\psi_k} \Delta t \\
+   0
+ \end{array} \right] +  \left[ \begin{array}{c}
+   \frac{1}{2} (\Delta t)^2 \cos(\psi_k) \cdot \nu_{a,k} \\
+   \frac{1}{2} (\Delta t)^2 \sin(\psi_k) \cdot \nu_{a,k} \\
+   \Delta t \cdot \nu_{a,k} \\
+   \frac{1}{2} (\Delta t)^2 \cdot \nu_{\ddot{\psi},k} \\
+   \Delta t \cdot \nu_{\ddot{\psi},k}
+ \end{array} \right]
+\]
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org60c54ef" class="outline-2">
+<h2 id="org60c54ef"><span class="section-number-2">3</span> Unscented Kalman Filter</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-orge7d839a" class="outline-3">
+<h3 id="orge7d839a"><span class="section-number-3">3.1</span> Sigma point matrix</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Number sigma points \(n_{\sigma} = 2 n_x + 1\)
+</p>
+
+<p>
+Rule for sigma point matrix
+\[
+X_{k|k} = \left[ x_{k|k} \quad x_{k|k} + \sqrt{(\lambda + n_x) P_{k|k}} \quad x_{k|k} - \sqrt{(\lambda + n_x) P_{k|k}} \right]
+\]
+</p>
+
+<p>
+Design parameter \(\lambda = 3 - n_x\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc4c6014" class="outline-3">
+<h3 id="orgc4c6014"><span class="section-number-3">3.2</span> UKF Augmentation</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Process noise covariance matrix
+\[ Q = E \left\{\nu_k \cdot \nu_k^T \right\} \]
+</p>
+
+<p>
+Augmented state
+\[ x_{a,k} = \left[ \begin{array}{c} p_x \\ p_y \\ v \\ \psi \\ \dot{\psi} \\ \nu_a \\ \nu_{\ddot{\psi}}\end{array} \right] \]
+</p>
+
+<p>
+Augmented covariance matrix
+\[ P_{a,k|k} = \left[ \begin{array}{cc} P_{k|k} & 0 \\ 0 & Q \end{array} \right]\]
+</p>
+
+
+<p>
+Rule for augmented sigma point matrix
+\[
+X_{a,k|k} = \left[ x_{a,k|k} \quad x_{a,k|k} + \sqrt{(\lambda + n_a) P_{a,k|k}} \quad x_{a,k|k} - \sqrt{(\lambda + n_a) P_{a,k|k}} \right]
+\]
+with scaling factor \(\lambda = 3-n_a\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org357c5b9" class="outline-3">
+<h3 id="org357c5b9"><span class="section-number-3">3.3</span> Sigma Point Prediction</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+\[ \mathcal{X}_{k+1} = f(x_k, \nu_k) \qquad \mathcal{X}_{a,k|k} \to \mathcal{X}_{k+1|k} \]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5d7b7e0" class="outline-3">
+<h3 id="org5d7b7e0"><span class="section-number-3">3.4</span> Predicted Mean and Covariance</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Weights
+\[
+w_i = \left\{ \begin{array}{ll}
+\frac{\lambda}{\lambda + n_a}, &\quad i = 1, \\
+\frac{1}{2(\lambda + n_a)}, &\quad i = 2, \ldots, n_{\sigma}
+\end{array} \right.
+\]
+</p>
+
+<p>
+Predicted mean
+\[
+x_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i \mathcal{X}_{k+1|k,i}
+\]
+</p>
+
+<p>
+Predicted covariance
+\[
+P_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i (\mathcal{X}_{k+1|k,i} - x_{k+1|k}) (\mathcal{X}_{k+1|k,i} - x_{k+1|k})^T
+\]
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2ab5e51" class="outline-2">
+<h2 id="org2ab5e51"><span class="section-number-2">4</span> Predict Radar Measurement</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+State Vector
+\[ x_{k+1|k} = \left[ \begin{array}{c} p_x \\ p_y \\ v \\ \psi \\ \dot{\psi} \end{array} \right] \]
+</p>
+
+
+<p>
+Measurement Vector
+\[ z_{k+1|k} = \left[ \begin{array}{c} \rho \\ \varphi \\ \dot{\rho} \end{array} \right] \]
+</p>
+
+<p>
+Measurement Model
+\[
+z_{k+1|k} = h(x_{k+1}) + \omega_{k+1}
+\]
+\[
+\rho = \sqrt{p_x^2+p_y^2}
+\]
+\[
+\varphi = \arctan{\frac{p_y}{p_x}}
+\]
+\[
+\dot{\rho} = \frac{p_x v \cos\psi + p_y v \sin\psi}{\sqrt{p_x^2 + p_y^2}}
+\]
+</p>
+
+<p>
+Measurement Prediction
+\[ \mathcal{Z}_{k+1|k,i} = h(\mathcal{X}_{k+1|k,i}) + \omega_{k+1} \]
+</p>
+
+<p>
+Predicted Measurement Mean
+\[
+z_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i \mathcal{Z}_{k+1|k,i}
+\]
+</p>
+
+<p>
+Predicted Covariance
+\[
+S_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i (\mathcal{Z}_{k+1|k,i} - z_{k+1|k}) (\mathcal{Z}_{k+1|k,i} - z_{k+1|k})^T + R
+\]
+</p>
+
+<p>
+\[
+R = E\left\{ w_k w_k^T \right\} = \left[\begin{array}{ccc} \sigma_\rho^2 & 0 & 0 \\ 0 & \sigma_\varphi^2 & 0 \\ 0&0&\sigma_\dot{\rho}^2 \end{array}\right]
+\]
+</p>
+</div>
+
+<div id="outline-container-orga8c0f09" class="outline-3">
+<h3 id="orga8c0f09"><span class="section-number-3">4.1</span> UKF Update</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Kalman gain
+\[
+K_{k+1|k} = T_{k+1|k} S^{-1}_{k+1|k}
+\]
+</p>
+
+<p>
+State update
+\[
+x_{k+1|k+1} = x_{k+1|k} + K_{k+1|k} (z_{k+1} - z_{k+1|k})
+\]
+</p>
+
+<p>
+Covariance matrix update
+\[
+P_{k+1|k+1} = P_{k+1|k} - K_{k+1|k} S_{k+1|k} K_{k+1|k}^T
+\]
+</p>
+
+<p>
+Cross-correlation between sigma points in state space and measurement space
+\[
+T_{k+1|k} = \sum_{i=0}^{2 n_\sigma} w_i (\mathcal{X}_{k+1|k,i} - x_{k+1|k}) (\mathcal{Z}_{k+1|k,i} - z_{k+1|k})^T
+\]
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5cbf75f" class="outline-2">
+<h2 id="org5cbf75f"><span class="section-number-2">5</span> Process Noise and the UKF Project</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-org0401d47" class="outline-3">
+<h3 id="org0401d47"><span class="section-number-3">5.1</span> Process Noise and the UKF Project</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+\(\sigma_a^2\) representing longitudinal acceleration noise (you might see this referred to as linear acceleration)
+\(\sigma_\ddot{\sigma}​​​^2\) representing yaw acceleration noise (this is also called angular acceleration)
+</p>
+</div>
+
+
+
+<div id="outline-container-org11ad688" class="outline-4">
+<h4 id="org11ad688"><span class="section-number-4">5.1.1</span> Linear Acceleration Noise Parameter Intuition</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<p>
+Let's get some intuition for these noise parameters.
+The units for the acceleration noise parameter \(\sigma_a^2\)
+ are \(\frac{m^2}{s^4}\).
+Taking the square root, we get \(\sigma_a\) with units \(\frac{m}{s^2}\).
+So the square root of the acceleration noise parameter has the same units as acceleration: ​\(\frac{m}{s^2}\).
+</p>
+
+<p>
+The parameter \(\sigma_a\) is the standard deviation of linear acceleration!
+Remember from the "CTRV Process Noise Vector" lecture that the linear acceleration is being modeled
+as a Gaussian distribution with mean zero and standard deviation \(\sigma_a\).
+In a Gaussian distribution, about 95% of your values are within \(2\sigma_a\).
+</p>
+
+<p>
+So if you choose \(\sigma_a^2=9 \frac{m^2}{s^4}\),
+ then you expect the acceleration to be between \(-6\frac{m}{s^2}\) and \(+6\frac{m}{s^2}\) about 95% of the time.
+</p>
+
+<p>
+Tuning parameters involves some trial and error. Using your intuition can help you find reasonable initial values.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb32f4c5" class="outline-4">
+<h4 id="orgb32f4c5"><span class="section-number-4">5.1.2</span> Yaw Acceleration Noise Parameter Intuition</h4>
+<div class="outline-text-4" id="text-5-1-2">
+<p>
+Let's think about what values might be reasonable for the yaw acceleration noise parameter.
+</p>
+
+<p>
+Imagine the bicycle is traveling in a circle with a constant yaw rate (angular velocity) of ​\(\frac{\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}}\).
+ That means the bicycle would complete a full circle in 16 seconds: ​\(\frac{\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}} \cdot 16s = 2 \pi\).
+</p>
+
+<p>
+That seems reasonable for an average bike rider traveling in a circle with a radius of maybe 16 meters.
+</p>
+
+<p>
+The bike rider would have also have a tangential velocity of 6.28 meters per second because
+ ​\(\frac{\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}} \cdot 16\; \mathrm{meters}=6.28\) meters per second.
+</p>
+
+<p>
+What if the angular acceleration were now \(-2\pi \frac{\mathrm{rad}}{\mathrm{s}^2}\) instead of zero?
+In just one second, the angular velocity would go from \(\frac{\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}}\)
+to \(-\frac{15\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}}\).
+This comes from ​\(\frac{\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}} - 2\pi \frac{\mathrm{rad}}{\mathrm{s}^2}\cdot 1\mathrm{s} =  -\frac{15\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}}\)
+</p>
+
+<p>
+The bicycle has been completing a complete circle in 16 seconds.
+But with such a high angular acceleration, then all of a sudden the bicycle is going around
+the circle in the opposite direction and only takes about 1.1 second to complete the circle.
+</p>
+
+<p>
+From a bicycle, a setting in the range of \(\sigma_{\ddot{\psi}} = 2\pi \frac{\mathrm{rad}}{\mathrm{s}^2}\) seems too high.
+In the project, you'll have to experiment with different values to see what works well.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org167d74a" class="outline-4">
+<h4 id="org167d74a"><span class="section-number-4">5.1.3</span> Measurement Noise Parameters</h4>
+<div class="outline-text-4" id="text-5-1-3">
+<p>
+Measurement noise parameters represent uncertainty in sensor measurements. In general, the manufacturer will provide these values in the sensor manual. In the UKF project, you will not need to tune these parameters.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org98da30e" class="outline-3">
+<h3 id="org98da30e"><span class="section-number-3">5.2</span> Normalized Innovation Squared</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+\[
+\varepsilon = (z_{k+1} - z_{k+1|k})^T \cdot S^{-1}_{k+1|k} \cdot (z_{k+1} - z_{k+1|k}) \sim \chi^2
+\]
+</p>
+
+<div class="org-src-container">
+<pre class="src src-R"><span style="color: #008b8b;">library</span>(ascii)
+a <span style="color: #008b8b;">&lt;-</span> ascii(c(qchisq(.05, df=2), qchisq(.95, df=2)),caption=<span style="color: #8b2252;">'chi^2, df=2'</span>)
+b <span style="color: #008b8b;">&lt;-</span> ascii(c(qchisq(.05, df=3), qchisq(.95, df=3)),caption=<span style="color: #8b2252;">'chi^2, df=3'</span>)
+print(a,type=<span style="color: #8b2252;">"org"</span>)
+print(b,type=<span style="color: #8b2252;">"org"</span>)
+rm(a,b)
+</pre>
+</div>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right">0.10</td>
+<td class="org-right">5.99</td>
+</tr>
+
+<tr>
+<td class="org-right">0.35</td>
+<td class="org-right">7.81</td>
+</tr>
+</tbody>
+</table>
+
+
+
+<p>
+![equation](<a href="http://www.sciweavers.org/tex2img.php?eq=1+sin(mc%5E2)&amp;bc=White&amp;fc=Black&amp;im=jpg&amp;fs=12&amp;ff=arev&amp;edit">http://www.sciweavers.org/tex2img.php?eq=1+sin(mc^2)&amp;bc=White&amp;fc=Black&amp;im=jpg&amp;fs=12&amp;ff=arev&amp;edit</a>=)
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: miha</p>
+<p class="date">Created: 2017-05-28 Sun 10:29</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

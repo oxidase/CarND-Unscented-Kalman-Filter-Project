@@ -251,7 +251,7 @@ That seems reasonable for an average bike rider traveling in a circle with a rad
 The bike rider would have also have a tangential velocity of 6.28 meters per second because
  ​$\frac{\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}} \cdot 16\; \mathrm{meters}=6.28$ meters per second.
 
-What if the angular acceleration were now $-2\pi \frac{\mathrn{rad}}{\mathrm{s}^2}$ instead of zero?
+What if the angular acceleration were now $-2\pi \frac{\mathrm{rad}}{\mathrm{s}^2}$ instead of zero?
 In just one second, the angular velocity would go from $\frac{\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}}$
 to $-\frac{15\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}}$.
 This comes from ​$\frac{\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}} - 2\pi \frac{\mathrm{rad}}{\mathrm{s}^2}\cdot 1\mathrm{s} =  -\frac{15\pi}{8} \frac{\mathrm{rad}}{\mathrm{s}}$
@@ -260,7 +260,7 @@ The bicycle has been completing a complete circle in 16 seconds.
 But with such a high angular acceleration, then all of a sudden the bicycle is going around
 the circle in the opposite direction and only takes about 1.1 second to complete the circle.
 
-From a bicycle, a setting in the range of $\sigma_{\ddot{\psi}} = 2\pi \frac{\mathrn{rad}}{\mathrm{s}^2}$ seems too high.
+From a bicycle, a setting in the range of $\sigma_{\ddot{\psi}} = 2\pi \frac{\mathrm{rad}}{\mathrm{s}^2}$ seems too high.
 In the project, you'll have to experiment with different values to see what works well.
 
 *** Measurement Noise Parameters
@@ -284,3 +284,7 @@ rm(a,b)
 
 | 0.10 | 5.99 |
 | 0.35 | 7.81 |
+
+
+
+![test](http://www.sciweavers.org/tex2img.php?eq=1%2Bsin%28mc%5E2%29&bc=White&fc=Black&im=jpg&fs=12&ff=arev&edit=)
