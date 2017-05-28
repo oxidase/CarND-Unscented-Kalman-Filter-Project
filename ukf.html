@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-28 Sun 10:29 -->
+<!-- 2017-05-28 Sun 10:56 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title></title>
@@ -252,8 +252,8 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 
-<div id="outline-container-orgda41c1e" class="outline-2">
-<h2 id="orgda41c1e"><span class="section-number-2">1</span> Model</h2>
+<div id="outline-container-orgfbf59f4" class="outline-2">
+<h2 id="orgfbf59f4"><span class="section-number-2">1</span> Model</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Models list:
@@ -268,11 +268,11 @@ Models list:
 </div>
 </div>
 
-<div id="outline-container-org59ed9aa" class="outline-2">
-<h2 id="org59ed9aa"><span class="section-number-2">2</span> The Constant Tturn Rate and Velocity magnitude model (CTRV) Model</h2>
+<div id="outline-container-org6a6d012" class="outline-2">
+<h2 id="org6a6d012"><span class="section-number-2">2</span> The Constant Turn Rate and Velocity magnitude model (CTRV) Model</h2>
 <div class="outline-text-2" id="text-2">
-</div><div id="outline-container-org88e856c" class="outline-3">
-<h3 id="org88e856c"><span class="section-number-3">2.1</span> General State Vector</h3>
+</div><div id="outline-container-org7b615e1" class="outline-3">
+<h3 id="org7b615e1"><span class="section-number-3">2.1</span> General State Vector</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 \[ x = \left[ \begin{array}{c} p_x \\ p_y \\ v \\ \psi \\ \dot{\psi} \end{array} \right] \]
@@ -280,8 +280,8 @@ Models list:
 </div>
 </div>
 
-<div id="outline-container-orge449fd3" class="outline-3">
-<h3 id="orge449fd3"><span class="section-number-3">2.2</span> Differential equation</h3>
+<div id="outline-container-org23dad02" class="outline-3">
+<h3 id="org23dad02"><span class="section-number-3">2.2</span> Differential equation</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 \[
@@ -293,8 +293,8 @@ Models list:
 </div>
 </div>
 
-<div id="outline-container-org9351225" class="outline-3">
-<h3 id="org9351225"><span class="section-number-3">2.3</span> Integral</h3>
+<div id="outline-container-orgf7924ee" class="outline-3">
+<h3 id="orgf7924ee"><span class="section-number-3">2.3</span> Integral</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 \[
@@ -329,8 +329,8 @@ x_k +
 </div>
 </div>
 
-<div id="outline-container-org47f34a2" class="outline-3">
-<h3 id="org47f34a2"><span class="section-number-3">2.4</span> CTRV Zero Yaw Rate \(\dot{\psi}_k=0\)</h3>
+<div id="outline-container-org54a9b94" class="outline-3">
+<h3 id="org54a9b94"><span class="section-number-3">2.4</span> CTRV Zero Yaw Rate \(\dot{\psi}_k=0\)</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 \[
@@ -349,8 +349,8 @@ x_k +
 </div>
 </div>
 
-<div id="outline-container-org9379a9d" class="outline-3">
-<h3 id="org9379a9d"><span class="section-number-3">2.5</span> CTRV Process Noise Vector</h3>
+<div id="outline-container-orgffe2a3b" class="outline-3">
+<h3 id="orgffe2a3b"><span class="section-number-3">2.5</span> CTRV Process Noise Vector</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 Longitudinal acceleration noise \(\nu_{a,k} \sim \mathcal{N}(0, \sigma_a^2)\)
@@ -384,11 +384,11 @@ x_k +
 </div>
 </div>
 
-<div id="outline-container-org60c54ef" class="outline-2">
-<h2 id="org60c54ef"><span class="section-number-2">3</span> Unscented Kalman Filter</h2>
+<div id="outline-container-org76cce6c" class="outline-2">
+<h2 id="org76cce6c"><span class="section-number-2">3</span> Unscented Kalman Filter</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orge7d839a" class="outline-3">
-<h3 id="orge7d839a"><span class="section-number-3">3.1</span> Sigma point matrix</h3>
+</div><div id="outline-container-org106c407" class="outline-3">
+<h3 id="org106c407"><span class="section-number-3">3.1</span> Sigma point matrix</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Number sigma points \(n_{\sigma} = 2 n_x + 1\)
@@ -407,8 +407,8 @@ Design parameter \(\lambda = 3 - n_x\)
 </div>
 </div>
 
-<div id="outline-container-orgc4c6014" class="outline-3">
-<h3 id="orgc4c6014"><span class="section-number-3">3.2</span> UKF Augmentation</h3>
+<div id="outline-container-orgd1bf223" class="outline-3">
+<h3 id="orgd1bf223"><span class="section-number-3">3.2</span> UKF Augmentation</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Process noise covariance matrix
@@ -436,8 +436,8 @@ with scaling factor \(\lambda = 3-n_a\)
 </div>
 </div>
 
-<div id="outline-container-org357c5b9" class="outline-3">
-<h3 id="org357c5b9"><span class="section-number-3">3.3</span> Sigma Point Prediction</h3>
+<div id="outline-container-orgce9414d" class="outline-3">
+<h3 id="orgce9414d"><span class="section-number-3">3.3</span> Sigma Point Prediction</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 \[ \mathcal{X}_{k+1} = f(x_k, \nu_k) \qquad \mathcal{X}_{a,k|k} \to \mathcal{X}_{k+1|k} \]
@@ -445,8 +445,8 @@ with scaling factor \(\lambda = 3-n_a\)
 </div>
 </div>
 
-<div id="outline-container-org5d7b7e0" class="outline-3">
-<h3 id="org5d7b7e0"><span class="section-number-3">3.4</span> Predicted Mean and Covariance</h3>
+<div id="outline-container-orga34c5d8" class="outline-3">
+<h3 id="orga34c5d8"><span class="section-number-3">3.4</span> Predicted Mean and Covariance</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Weights
@@ -475,8 +475,8 @@ P_{k+1|k} = \sum_{i=1}^{n_{\sigma}} w_i (\mathcal{X}_{k+1|k,i} - x_{k+1|k}) (\ma
 </div>
 </div>
 
-<div id="outline-container-org2ab5e51" class="outline-2">
-<h2 id="org2ab5e51"><span class="section-number-2">4</span> Predict Radar Measurement</h2>
+<div id="outline-container-org6f51d3f" class="outline-2">
+<h2 id="org6f51d3f"><span class="section-number-2">4</span> Predict Radar Measurement</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 State Vector
@@ -531,8 +531,8 @@ R = E\left\{ w_k w_k^T \right\} = \left[\begin{array}{ccc} \sigma_\rho^2 & 0 & 0
 </p>
 </div>
 
-<div id="outline-container-orga8c0f09" class="outline-3">
-<h3 id="orga8c0f09"><span class="section-number-3">4.1</span> UKF Update</h3>
+<div id="outline-container-orgb005da0" class="outline-3">
+<h3 id="orgb005da0"><span class="section-number-3">4.1</span> UKF Update</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Kalman gain
@@ -565,11 +565,11 @@ T_{k+1|k} = \sum_{i=0}^{2 n_\sigma} w_i (\mathcal{X}_{k+1|k,i} - x_{k+1|k}) (\ma
 </div>
 </div>
 
-<div id="outline-container-org5cbf75f" class="outline-2">
-<h2 id="org5cbf75f"><span class="section-number-2">5</span> Process Noise and the UKF Project</h2>
+<div id="outline-container-orge3a67a4" class="outline-2">
+<h2 id="orge3a67a4"><span class="section-number-2">5</span> Process Noise and the UKF Project</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-org0401d47" class="outline-3">
-<h3 id="org0401d47"><span class="section-number-3">5.1</span> Process Noise and the UKF Project</h3>
+</div><div id="outline-container-org936d301" class="outline-3">
+<h3 id="org936d301"><span class="section-number-3">5.1</span> Process Noise and the UKF Project</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 \(\sigma_a^2\) representing longitudinal acceleration noise (you might see this referred to as linear acceleration)
@@ -579,8 +579,8 @@ T_{k+1|k} = \sum_{i=0}^{2 n_\sigma} w_i (\mathcal{X}_{k+1|k,i} - x_{k+1|k}) (\ma
 
 
 
-<div id="outline-container-org11ad688" class="outline-4">
-<h4 id="org11ad688"><span class="section-number-4">5.1.1</span> Linear Acceleration Noise Parameter Intuition</h4>
+<div id="outline-container-org05ce977" class="outline-4">
+<h4 id="org05ce977"><span class="section-number-4">5.1.1</span> Linear Acceleration Noise Parameter Intuition</h4>
 <div class="outline-text-4" id="text-5-1-1">
 <p>
 Let's get some intuition for these noise parameters.
@@ -608,8 +608,8 @@ Tuning parameters involves some trial and error. Using your intuition can help y
 </div>
 </div>
 
-<div id="outline-container-orgb32f4c5" class="outline-4">
-<h4 id="orgb32f4c5"><span class="section-number-4">5.1.2</span> Yaw Acceleration Noise Parameter Intuition</h4>
+<div id="outline-container-org8795311" class="outline-4">
+<h4 id="org8795311"><span class="section-number-4">5.1.2</span> Yaw Acceleration Noise Parameter Intuition</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <p>
 Let's think about what values might be reasonable for the yaw acceleration noise parameter.
@@ -649,8 +649,8 @@ In the project, you'll have to experiment with different values to see what work
 </div>
 </div>
 
-<div id="outline-container-org167d74a" class="outline-4">
-<h4 id="org167d74a"><span class="section-number-4">5.1.3</span> Measurement Noise Parameters</h4>
+<div id="outline-container-org5342fd6" class="outline-4">
+<h4 id="org5342fd6"><span class="section-number-4">5.1.3</span> Measurement Noise Parameters</h4>
 <div class="outline-text-4" id="text-5-1-3">
 <p>
 Measurement noise parameters represent uncertainty in sensor measurements. In general, the manufacturer will provide these values in the sensor manual. In the UKF project, you will not need to tune these parameters.
@@ -659,8 +659,8 @@ Measurement noise parameters represent uncertainty in sensor measurements. In ge
 </div>
 </div>
 
-<div id="outline-container-org98da30e" class="outline-3">
-<h3 id="org98da30e"><span class="section-number-3">5.2</span> Normalized Innovation Squared</h3>
+<div id="outline-container-orgaaeb18a" class="outline-3">
+<h3 id="orgaaeb18a"><span class="section-number-3">5.2</span> Normalized Innovation Squared</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 \[
@@ -702,7 +702,7 @@ rm(a,b)
 
 
 <p>
-![equation](<a href="http://www.sciweavers.org/tex2img.php?eq=1+sin(mc%5E2)&amp;bc=White&amp;fc=Black&amp;im=jpg&amp;fs=12&amp;ff=arev&amp;edit">http://www.sciweavers.org/tex2img.php?eq=1+sin(mc^2)&amp;bc=White&amp;fc=Black&amp;im=jpg&amp;fs=12&amp;ff=arev&amp;edit</a>=)
+![test](<a href="http://www.sciweavers.org/tex2img.php?eq=1+sin(mc%5E2)&amp;bc=White&amp;fc=Black&amp;im=jpg&amp;fs=12&amp;ff=arev&amp;edit">http://www.sciweavers.org/tex2img.php?eq=1+sin(mc^2)&amp;bc=White&amp;fc=Black&amp;im=jpg&amp;fs=12&amp;ff=arev&amp;edit</a>=)
 </p>
 </div>
 </div>
@@ -710,7 +710,7 @@ rm(a,b)
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: miha</p>
-<p class="date">Created: 2017-05-28 Sun 10:29</p>
+<p class="date">Created: 2017-05-28 Sun 10:56</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

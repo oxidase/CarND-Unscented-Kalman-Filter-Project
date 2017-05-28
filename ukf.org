@@ -1,8 +1,8 @@
 #+options: toc:nil
 #+html_link_home:
+#+html_head: <link rel="stylesheet" type="text/css" href="http://www.star.bris.ac.uk/bjm/css/bjm.css" />
 #+html_link_up:
 #+html_mathjax:
-#+html_head: <link rel="stylesheet" type="text/css" href="http://www.star.bris.ac.uk/bjm/css/bjm.css" />
 #+latex_header: \usepackage{fullpage}
 
 * Model
@@ -14,7 +14,7 @@ Models list:
 - constant steering angle and velocity (CSAV)
 - constant curvature and acceleration (CCA)
 
-* The Constant Tturn Rate and Velocity magnitude model (CTRV) Model
+* The Constant Turn Rate and Velocity magnitude model (CTRV) Model
 
 ** General State Vector
 \[ x = \left[ \begin{array}{c} p_x \\ p_y \\ v \\ \psi \\ \dot{\psi} \end{array} \right] \]
